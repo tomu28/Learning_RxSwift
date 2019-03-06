@@ -20,8 +20,8 @@ class ViewController: UIViewController {
         let helloObservable: Observable<String> = Observable.from(["H","E","L","L","O"])
         // メソッドチェーンver
         helloObservable.subscribe(
-            onNext: { value in print(value) },
-            onError: { error in print(error.localizedDescription) },
+            onNext: { print($0) },
+            onError: { print($0.localizedDescription) },
             onCompleted: { print("completed") }
             ).disposed(by: DisposeBag())
     }
