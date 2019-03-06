@@ -18,16 +18,12 @@ class ViewController: UIViewController {
         
         // Observableを生成
         let helloObservable: Observable<String> = Observable.from(["H","E","L","L","O"])
-        // 監視メソッド
-        let subscription = helloObservable.subscribe(
-            onNext: {value in print(value)},
-            onError: {error in print(error.localizedDescription)},
-            onCompleted: {print("completed")}
-        )
-        // 完了時に解放
-        let disposeBag = DisposeBag()
-        subscription.disposed(by: disposeBag)
-        
+        // メソッドチェーンver
+        helloObservable.subscribe(
+            onNext: { value in print(value) },
+            onError: { error in print(error.localizedDescription) },
+            onCompleted: { print("completed") }
+            ).disposed(by: DisposeBag())
     }
 
 
